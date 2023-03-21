@@ -48,6 +48,12 @@ namespace Animale
     {
         static void Main(string[] args)
         {
+            // initializare obiecte din clasele definite mai sus
+            imagini Img1 = new imagini();
+            imagini Img2 = new imagini();
+            sunete snd1 = new sunete();
+            sunete snd2 = new sunete();
+            joc Joc1 = new joc();
             Console.WriteLine("This is my project!");
             Console.ReadKey();
         }
