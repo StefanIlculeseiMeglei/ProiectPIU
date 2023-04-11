@@ -8,7 +8,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace NivelStocareData
 {
-    public class AdministrareAnimale_FisierText
+    public class AdministrareQuiz_FisierText
     {
         private const int ID = 0;
         private const int NUME = 1;
@@ -23,7 +23,7 @@ namespace NivelStocareData
         string[] s1;
         string[] s2;
 
-        public AdministrareAnimale_FisierText(imagini img,sunete snd,string numeFisierImagini,string numeFisierSunete)
+        public AdministrareQuiz_FisierText(imagini img,sunete snd,string numeFisierImagini,string numeFisierSunete)
         {
             nr1 = img.retNr();
             nr2 = snd.retNr();
@@ -64,13 +64,14 @@ namespace NivelStocareData
             s1 = _img.retLisaNume();
         }
 
-        public void imaginiCitire( imagini img, string numeFisierImg) // constructor in care precizam calea fisierul text cu numele imaginilor
+        public bool imaginiCitire( imagini img, string numeFisierImg) // constructor in care precizam calea fisierul text cu numele imaginilor
         {
-
+                bool exista = true;
                 Stream streamFisierText = File.Open(numeFisierImg, FileMode.OpenOrCreate); // verifica daca exista fisierul
                 if (streamFisierText.Length == 0)
                 {
-                    Console.WriteLine($"Fisierul " + numeFisierImg + " este gol.");
+                    exista = false;
+                    
                     streamFisierText.Close();
                     using (StreamWriter streamWriterFisierText = new StreamWriter(numeFisierImagini, true))
                     {
@@ -86,7 +87,7 @@ namespace NivelStocareData
                     using (StreamReader streamReader = new StreamReader(numeFisierImg)) /// citesc datele din fisier
                     {
                         string linieFisier;
-                        linieFisier = streamReader.ReadLine(); // citesc prima linie, ea va fi nr de linii de citit
+                        linieFisier = streamReader.ReadLine(); 
                         // citirea linilor in continuare
                         while ((linieFisier = streamReader.ReadLine()) != null)
                         {
@@ -100,16 +101,17 @@ namespace NivelStocareData
 
 
                 }
-            this.updateImagini(img);            
+            this.updateImagini(img);
+            return exista;
         }
 
-        public void suneteCitire(sunete snd, string numeFisierImg) // constructor in care precizam calea fisierul text cu numele imaginilor
+        public bool suneteCitire(sunete snd, string numeFisierImg) // constructor in care precizam calea fisierul text cu numele imaginilor
         {
-
+            bool exista = true;
             Stream streamFisierText = File.Open(numeFisierSunete, FileMode.OpenOrCreate); // verifica daca exista fisierul
             if (streamFisierText.Length == 0)
             {
-                Console.WriteLine($"Fisierul " + numeFisierSunete + " este gol.");
+                exista = false;
                 streamFisierText.Close();
                 using (StreamWriter streamWriterFisierText = new StreamWriter(numeFisierSunete, true))
                 {
@@ -139,6 +141,7 @@ namespace NivelStocareData
 
                 this.updateSunete(snd);
             }
+            return exista;
         }
 
         public void AddImagine(imagine img)
@@ -187,21 +190,20 @@ namespace NivelStocareData
             }
         }
 
-        public void afisareDate()
+        public string afisareDate()
         {
-
-            Console.WriteLine("Fisierul cu imagini are {0} elemente.", nr1);
+            string TEXT = string.Empty;
+            TEXT += $"Fisierul cu imagini are {nr1} elemente.\n";
             for (int i = 0; i < nr1; i++)
             {
-                Console.WriteLine("Element {0} are valoarea {1} si indentificatorul unic {2}",
-                    i, s1[i], id1[i]);
+                TEXT += $"Element {i} are valoarea {s1[i]} si indentificatorul unic {id1[i]}\n";
             }
-            Console.WriteLine("Fisierul cu sunete are {0} elemente.", nr2);
+            TEXT += $"Fisierul cu sunete are {nr2} elemente.\n";
             for (int i = 0; i < nr2; i++)
             {
-                Console.WriteLine("Element {0} are valoarea {1} si indentificatorul unic {2}",
-                    i, s2[i], id2[i]);
+                TEXT += $"Element {i} are valoarea {s2[i]} si indentificatorul unic {id2[i]}\n";
             }
+            return TEXT;
         }
     }
 }

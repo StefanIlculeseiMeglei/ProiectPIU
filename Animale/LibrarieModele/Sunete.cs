@@ -12,8 +12,8 @@ namespace LibrarieModele
     public class sunete
     {
         private const int MAXNUME = 50;
-        int nr; // numar de sunete
-        string cale;
+        internal int nr { get; set; } // numar de sunete
+        internal string cale { get; set; }
         sunet[] snd; 
         public sunete()
         {

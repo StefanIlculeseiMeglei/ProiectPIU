@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dataJoc.cs" />
+    <Compile Include="verificaQuiz.cs" />
+    <Compile Include="dataQuiz.cs" />
     <Compile Include="Imagini.cs" />
     <Compile Include="Imagine.cs" />
     <Compile Include="Sunete.cs" />

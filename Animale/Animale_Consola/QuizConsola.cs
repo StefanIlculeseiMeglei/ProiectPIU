@@ -7,62 +7,54 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace Animale
+namespace Quiz_Consola
 {
-    public class JocConsola
+    public class QuizConsola
     {
-        int runda;
-        int puncte;
-        int rundaMax;
-        const int MINWIN = 100;
-        const int valoare = 20;
         const string msg = "1)Runda urmatoare" +
             "\n2)Afisare puncte" +
             "\n3)Iesire joc";
-        public JocConsola() {
+
+        const int NEW_RUNDA = 1;
+        const int NEW_PUNCTE = 0;
+        const int NR_OPTIUNI_QUIZ = 3;
+        internal int runda { get; set; }
+        internal int puncte { get; set; }
+        
+        public QuizConsola() {
         }
         public void afisareScor()
         {
             Console.WriteLine($"{puncte}");
         }
-        internal bool verificaCastig()
-        {
-            if (puncte < MINWIN)
-                return false; 
-            else
-                return true;
-        }
-        public void startJoc(dataJoc data)
+        public void startQuiz(dataQuiz data)
         {
             Boolean stop = false;
-            rundaMax = data.retRundaMax();
-            runda = 1;
-            puncte = 0;
-            string[] tempSunete = new string[3];
+            verificaQuiz verifica = new verificaQuiz(data.valoareRaspuns, data.RUNDAMAX);
+            
+            runda = NEW_RUNDA;
+            puncte = NEW_PUNCTE;
+            string[] tempSunete = new string[NR_OPTIUNI_QUIZ];
             int i,op;
-            while (runda < rundaMax && stop==false) {
-                tempSunete = data.getSuneteRunda(runda);
+            while (verifica.verificaRunda(runda) && stop==false) {
+                tempSunete = data.getSuneteRunda(runda); /// optiuni sunete pentru runda x
                 Console.Clear();
                 Console.WriteLine("Runda " + runda + " :");
                 Console.WriteLine("Imagine:" + data.getImagineRunda(runda));
                 Console.WriteLine("Sunete:");
-                for (i = 0; i < 3; i++)
+                for (i = 0; i < NR_OPTIUNI_QUIZ; i++)
                     Console.WriteLine($"{i+1})" + tempSunete[i]);
 
                 Console.Write("Alegeti o optiune:");
                 op = Convert.ToInt32(Console.ReadLine());
-                if (op != (data.getRapunsRunda(runda) + 1))
+
+                if (verifica.raspunsQuiz(op, data.getRapunsRunda(runda) + 1))
                 {
-                    Console.Clear();
-                    Console.WriteLine("Raspuns incorect!");
+                    Console.WriteLine("Raspuns corect!");
+                    puncte += data.valoareRaspuns;
                 }
                 else
-                {
-                    Console.Clear();
-                    puncte += valoare;
-                    Console.WriteLine("Raspuns corect!");
-                }
+                    Console.WriteLine("Raspuns incorect!");
 
                 do
                 {
@@ -93,9 +85,10 @@ namespace Animale
                     }
 
                 } while (op != 1 && op !=3);
+
                 runda++;
             }
-            if(verificaCastig())
+            if(verifica.verificaCastig(puncte))
             {
                 Console.WriteLine("Ati castigat!");
                 Console.WriteLine($"Punctaj final {puncte}");

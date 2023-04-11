@@ -11,8 +11,8 @@ namespace LibrarieModele
         private const int ID = 0;
         private const int NAME = 1;
         private const char SEPARATOR_PRINCIPAL_FISIER = ';';
-        int id;
-        string name;
+        internal int id { get; set; }
+        internal string name { get; set; }
         public sunet(int id, string name)
         {
             this.id = id;

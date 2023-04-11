@@ -3,7 +3,7 @@ using System.Collections.Specialized;
 using System.Configuration;
 using System.Reflection;
 
-using Animale;
+using Quiz_Consola;
 
 using LibrarieModele;
 
@@ -24,9 +24,9 @@ namespace Animale_Consola
             sunet snd = new sunet();
             imagini vimg = new imagini();
             sunete vsnd = new sunete();
-            dataJoc data = new dataJoc();
-            JocConsola joc = new JocConsola();
-            AdministrareAnimale_FisierText admin = new AdministrareAnimale_FisierText(vimg, vsnd,numeFisierImg,numeFisierSnd);
+            dataQuiz data = new dataQuiz(20,10);
+            QuizConsola joc = new QuizConsola();
+            AdministrareQuiz_FisierText admin = new AdministrareQuiz_FisierText(vimg, vsnd,numeFisierImg,numeFisierSnd);
             admin.afisareDate();
             int op,id;
             string name;
@@ -49,7 +49,7 @@ namespace Animale_Consola
                 {
                     
                     case 1:
-                        admin.afisareDate();
+                        Console.WriteLine(admin.afisareDate());
                         Console.WriteLine("\t...press any key to continue");
                         Console.ReadKey();
                         break;
@@ -76,12 +76,14 @@ namespace Animale_Consola
                         Console.ReadKey();
                         break;
                     case 4:
-                        admin.imaginiCitire(vimg, numeFisierImg);
+                        if (!admin.imaginiCitire(vimg, numeFisierImg))
+                            Console.WriteLine($"Fisirul {numeFisierImg} este gol.");
                         Console.WriteLine("\t...press any key to continue");
                         Console.ReadKey();
                         break;
                     case 5:
-                        admin.suneteCitire(vsnd, numeFisierImg);
+                        if(!admin.suneteCitire(vsnd, numeFisierImg))
+                            Console.WriteLine($"Fisirul {numeFisierImg} este gol.");
                         Console.WriteLine("\t...press any key to continue");
                         Console.ReadKey();
                         break;
@@ -96,8 +98,8 @@ namespace Animale_Consola
                         Console.ReadKey();
                         break;
                     case 8:
-                        data.getDate(vimg, vsnd);
-                        joc.startJoc(data);
+                        data.incarcaData(vimg, vsnd);
+                        joc.startQuiz(data);
                         break;
                     case 9:
                         Environment.Exit(0);
