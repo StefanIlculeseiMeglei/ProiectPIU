@@ -50,11 +50,15 @@ namespace Quiz_Consola
 
                 if (verifica.raspunsQuiz(op, data.getRapunsRunda(runda) + 1))
                 {
+                    Console.Clear();
                     Console.WriteLine("Raspuns corect!");
                     puncte += data.valoareRaspuns;
                 }
                 else
+                {
+                    Console.Clear();
                     Console.WriteLine("Raspuns incorect!");
+                }
 
                 do
                 {
@@ -90,6 +94,7 @@ namespace Quiz_Consola
             }
             if(verifica.verificaCastig(puncte))
             {
+                Console.Clear ();
                 Console.WriteLine("Ati castigat!");
                 Console.WriteLine($"Punctaj final {puncte}");
                 Console.WriteLine("\t...press any key to continue");
@@ -97,6 +102,7 @@ namespace Quiz_Consola
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("Ati pierdut!");
                 Console.WriteLine($"Punctaj final {puncte}");
                 Console.WriteLine("\t...press any key to continue");
