@@ -58,7 +58,6 @@ namespace Animale_Form
             admin.imaginiCitire(vimg, numeFisierImg);
             admin.suneteCitire(vsnd, numeFisierSnd);
             quiz.incarcaData(vimg, vsnd);
-            AfiseazaIntrebari(quiz);
 
         }
         private void AfiseazaIntrebari(dataQuiz quiz)
@@ -160,9 +159,17 @@ namespace Animale_Form
                 this.textBox1.Hide();
                 this.label1.Hide();
                 this.BtnAdaugaUser.Hide();
+                this.BtnStart.Show();
             }
             else
                 this.textBox1.BackColor = Color.Red;
+
+        }
+
+        private void BtnStart_Click(object sender, EventArgs e)
+        {
+            this.BtnStart.Hide();
+            this.AfiseazaIntrebari(quiz);
 
         }
     }

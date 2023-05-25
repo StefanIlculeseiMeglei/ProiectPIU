@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.BtnAdaugaUser = new System.Windows.Forms.Button();
+            this.BtnStart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -51,7 +52,7 @@
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // button1
+            // BtnAdaugaUser
             // 
             this.BtnAdaugaUser.Location = new System.Drawing.Point(16, 60);
             this.BtnAdaugaUser.Name = "BtnAdaugaUser";
@@ -61,11 +62,23 @@
             this.BtnAdaugaUser.UseVisualStyleBackColor = true;
             this.BtnAdaugaUser.Click += new System.EventHandler(this.BtnAdaugaUser_Click);
             // 
+            // BtnStart
+            // 
+            this.BtnStart.Location = new System.Drawing.Point(16, 13);
+            this.BtnStart.Name = "BtnStart";
+            this.BtnStart.Size = new System.Drawing.Size(75, 23);
+            this.BtnStart.TabIndex = 3;
+            this.BtnStart.Text = "Start";
+            this.BtnStart.UseVisualStyleBackColor = true;
+            this.BtnStart.Hide();
+            this.BtnStart.Click += new System.EventHandler(this.BtnStart_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BtnStart);
             this.Controls.Add(this.BtnAdaugaUser);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
@@ -82,6 +95,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button BtnAdaugaUser;
+        private System.Windows.Forms.Button BtnStart;
     }
 }
 
