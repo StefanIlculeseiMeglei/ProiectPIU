@@ -20,15 +20,17 @@ namespace Animale_Form
         private Label lblHeaderSunet1;
         private Label lblHeaderSunet2;
         private Label lblHeaderSunet3;
+        private Label lblHeaderOptiuni;
         private Label[] NumeImagine;
         private Label[] NumeSunete;
-
+        private RadioButton[][] Optiuni;
+        private GroupBox[] grupOptiuni;
 
         string user;
         string numeFisierImg = ConfigurationManager.AppSettings["NumeFisierImg"];
         string numeFisierSnd = ConfigurationManager.AppSettings["NumeFisierSnd"];
         private const int LATIME_CONTROL = 100;
-        private const int DIMENSIUNE_PAS_Y = 30;
+        private const int DIMENSIUNE_PAS_Y = 38;
         private const int DIMENSIUNE_PAS_X = 120;
         private const int OFFSET_X = 200;
         imagine img = new imagine();
@@ -62,10 +64,17 @@ namespace Animale_Form
         }
         private void AfiseazaIntrebari(dataQuiz quiz)
         {
-            
+            int i = 0;
+            int j = 0;
+
+            new System.Drawing.Size(800, 600);
             int nrIntrebari = quiz.RUNDAMAX;
             NumeImagine = new Label[nrIntrebari];
             NumeSunete= new Label[3*nrIntrebari];
+            Optiuni = new RadioButton[nrIntrebari][];
+            for (i = 0; i < nrIntrebari; i++)
+                Optiuni[i] = new RadioButton[3];
+            grupOptiuni = new GroupBox[nrIntrebari];
             lblHeaderImagine = new Label();
             lblHeaderImagine.Width = LATIME_CONTROL;
             lblHeaderImagine.Text = "Imagine";
@@ -95,11 +104,14 @@ namespace Animale_Form
             lblHeaderSunet3.ForeColor = Color.DarkGreen;
             this.Controls.Add(lblHeaderSunet3);
 
+            lblHeaderOptiuni= new Label();
+            lblHeaderOptiuni.Width = LATIME_CONTROL;
+            lblHeaderOptiuni.Text = "Optiuni";
+            lblHeaderOptiuni.Left = OFFSET_X + DIMENSIUNE_PAS_X * 4;
+            lblHeaderOptiuni.ForeColor = Color.DarkGreen;
+            this.Controls.Add(lblHeaderOptiuni);
 
 
-
-            int i = 0;
-            int j = 0;
             for(i=0;i<nrIntrebari;i++)
             {
                 //adaugare control de tip Label pentru numele studentilor;
@@ -132,6 +144,8 @@ namespace Animale_Form
                 NumeSunete[j].Left = OFFSET_X + DIMENSIUNE_PAS_X*3; 
                 NumeSunete[j].Top = (i + 1) * DIMENSIUNE_PAS_Y;
                 this.Controls.Add(NumeSunete[j]);
+
+                
             }
         }
         private bool verificaUser(string s)
@@ -169,7 +183,42 @@ namespace Animale_Form
         private void BtnStart_Click(object sender, EventArgs e)
         {
             this.BtnStart.Hide();
+            this.groupBox1.Show();
+            this.groupBox2.Show();
+            this.groupBox3.Show();
+            this.groupBox4.Show();
+            this.groupBox5.Show();
+            this.groupBox6.Show();
+            this.groupBox7.Show();
+            this.groupBox8.Show();
+            this.groupBox9.Show();
+            this.groupBox10.Show();
             this.AfiseazaIntrebari(quiz);
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
+        {
 
         }
     }
