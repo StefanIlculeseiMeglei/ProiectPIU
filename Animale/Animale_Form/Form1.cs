@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
@@ -23,7 +24,7 @@ namespace Animale_Form
         private Label[] NumeSunete;
 
 
-
+        string user;
         string numeFisierImg = ConfigurationManager.AppSettings["NumeFisierImg"];
         string numeFisierSnd = ConfigurationManager.AppSettings["NumeFisierSnd"];
         private const int LATIME_CONTROL = 100;
@@ -41,7 +42,6 @@ namespace Animale_Form
         {
 
             admin = new AdministrareQuiz_FisierText(vimg, vsnd, numeFisierImg, numeFisierSnd);
-
             InitializeComponent();
             //setare proprietati
             this.StartPosition = FormStartPosition.Manual;
@@ -54,6 +54,7 @@ namespace Animale_Form
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            user = string.Empty;
             admin.imaginiCitire(vimg, numeFisierImg);
             admin.suneteCitire(vsnd, numeFisierSnd);
             quiz.incarcaData(vimg, vsnd);
@@ -133,6 +134,36 @@ namespace Animale_Form
                 NumeSunete[j].Top = (i + 1) * DIMENSIUNE_PAS_Y;
                 this.Controls.Add(NumeSunete[j]);
             }
+        }
+        private bool verificaUser(string s)
+        {
+            if (string.IsNullOrEmpty(s)) { return false; }
+            else
+                return true;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnAdaugaUser_Click(object sender, EventArgs e)
+        {
+            if (this.verificaUser(this.textBox1.Text) == true)
+            {
+                this.user = string.Copy(this.textBox1.Text);
+                this.textBox1.Hide();
+                this.label1.Hide();
+                this.BtnAdaugaUser.Hide();
+            }
+            else
+                this.textBox1.BackColor = Color.Red;
+
         }
     }
 }
