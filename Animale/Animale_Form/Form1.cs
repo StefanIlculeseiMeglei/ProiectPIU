@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
@@ -23,9 +24,10 @@ namespace Animale_Form
         private Label lblHeaderOptiuni;
         private Label[] NumeImagine;
         private Label[] NumeSunete;
+        private Button BtnCastig;
         private RadioButton[][] Optiuni;
         private GroupBox[] grupOptiuni;
-
+        private int corect;
         string user;
         string numeFisierImg = ConfigurationManager.AppSettings["NumeFisierImg"];
         string numeFisierSnd = ConfigurationManager.AppSettings["NumeFisierSnd"];
@@ -111,8 +113,15 @@ namespace Animale_Form
             lblHeaderOptiuni.ForeColor = Color.DarkGreen;
             this.Controls.Add(lblHeaderOptiuni);
 
+            BtnCastig = new Button();
+            BtnCastig.Left = 16;
+            BtnCastig.Top = 32;
+            BtnCastig.Size = new System.Drawing.Size(75, 22);
+            BtnCastig.Text = "Finalizare";
+            BtnCastig.Click += BtnCastig_Click;
+            this.Controls.Add(BtnCastig);
 
-            for(i=0;i<nrIntrebari;i++)
+            for (i=0;i<nrIntrebari;i++)
             {
                 //adaugare control de tip Label pentru numele studentilor;
                 NumeImagine[i] = new Label();
@@ -148,6 +157,35 @@ namespace Animale_Form
                 
             }
         }
+
+        private void BtnCastig_Click(object sender, EventArgs e)
+        {
+            this.verificaCastig();
+            BtnCastig.Hide();
+            if (corect >= this.quiz.RUNDAMAX * 0.6) 
+            {
+                Label mesaj=new Label();
+                mesaj.Left = 16;
+                mesaj.Top = 32;
+                mesaj.Size = new System.Drawing.Size(150, 100);
+                mesaj.Text = string.Concat("Ai castigat ", user, "!");
+                this.Controls.Add(mesaj);
+            }
+            else
+            {
+                Label mesaj = new Label();
+                mesaj.Left = 16;
+                mesaj.Top = 32;
+                mesaj.Size = new System.Drawing.Size(150, 100);
+                mesaj.Text = string.Concat("Ai pierdut ", user, "!");
+                this.Controls.Add(mesaj);
+
+            }
+            
+
+
+        }
+
         private bool verificaUser(string s)
         {
             if (string.IsNullOrEmpty(s)) { return false; }
@@ -158,6 +196,139 @@ namespace Animale_Form
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+        private void verificaCastig()
+        {
+
+            corect = 0;
+            int i = 0;
+            if (quiz.getRapunsRunda(i) == 0)
+                if (this.radioButton1.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 1)
+                if (this.radioButton2.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 2)
+                if (this.radioButton3.Checked == true)
+                    corect++;
+
+
+            i++;
+            if (quiz.getRapunsRunda(i) == 0)
+                if (this.radioButton4.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 1)
+                if (this.radioButton5.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 2)
+                if (this.radioButton6.Checked == true)
+                    corect++;
+
+
+            i++;
+            if (quiz.getRapunsRunda(i) == 0)
+                if (this.radioButton7.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 1)
+                if (this.radioButton8.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 2)
+                if (this.radioButton9.Checked == true)
+                    corect++;
+
+
+
+            i++;
+            if (quiz.getRapunsRunda(i) == 0)
+                if (this.radioButton10.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 1)
+                if (this.radioButton11.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 2)
+                if (this.radioButton12.Checked == true)
+                    corect++;
+
+
+
+            i++;
+            if (quiz.getRapunsRunda(i) == 0)
+                if (this.radioButton13.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 1)
+                if (this.radioButton14.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 2)
+                if (this.radioButton15.Checked == true)
+                    corect++;
+
+
+
+            i++;
+            if (quiz.getRapunsRunda(i) == 0)
+                if (this.radioButton16.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 1)
+                if (this.radioButton17.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 2)
+                if (this.radioButton18.Checked == true)
+                    corect++;
+
+
+
+            i++;
+            if (quiz.getRapunsRunda(i) == 0)
+                if (this.radioButton19.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 1)
+                if (this.radioButton20.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 2)
+                if (this.radioButton21.Checked == true)
+                    corect++;
+
+
+
+
+            i++;
+            if (quiz.getRapunsRunda(i) == 0)
+                if (this.radioButton22.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 1)
+                if (this.radioButton23.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 2)
+                if (this.radioButton24.Checked == true)
+                    corect++;
+
+
+
+
+            i++;
+            if (quiz.getRapunsRunda(i) == 0)
+                if (this.radioButton25.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 1)
+                if (this.radioButton26.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 2)
+                if (this.radioButton27.Checked == true)
+                    corect++;
+
+
+
+
+            i++;
+            if (quiz.getRapunsRunda(i) == 0)
+                if (this.radioButton28.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 1)
+                if (this.radioButton29.Checked == true)
+                    corect++;
+            if (quiz.getRapunsRunda(i) == 2)
+                if (this.radioButton30.Checked == true)
+                    corect++;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

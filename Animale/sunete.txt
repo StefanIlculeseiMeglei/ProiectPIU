@@ -1,0 +1,21 @@
+Fisier cu sunete
+1;pisica.mp3;
+2;cal.mp3;
+3;vultur.mp3;
+4;lup.mp3;
+5;caine.mp3;
+6;urs.mp3;
+7;zebra.mp3;
+8;leu.mp3;
+9;sarpe.mp3;
+10;soarece.mp3;
+11;tigru.mp3;
+12;papagal.mp3;
+13;delfin.mp3;
+14;balena.mp3;
+15;maimuta.mp3;
+16;porc.mp3;
+17;oaie.mp3;
+18;vaca.mp3;
+19;elefant.mp3;
+20;rinocer.mp3;
