@@ -12,11 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NivelStocareData", "NivelSt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animale_Consola", "Animale_Consola\Animale_Consola.csproj", "{4D5F3A21-C1FD-4E43-874E-440C218B3542}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animale_Form", "Animale_Form\Animale_Form.csproj", "{6B635965-3F15-4E93-AC0C-66E043700D5A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{7AFD3CF2-3358-42E0-B66F-BA024CD1D82B} = {7AFD3CF2-3358-42E0-B66F-BA024CD1D82B}
-		{C86C027B-0529-47F0-874C-847ADEC9E324} = {C86C027B-0529-47F0-874C-847ADEC9E324}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animale_winForm", "Animale_winForm\Animale_winForm.csproj", "{6B635965-3F15-4E93-AC0C-66E043700D5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

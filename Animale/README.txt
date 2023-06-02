@@ -1,2 +1,2 @@
 This project is a quiz to test kids knowledge regarding various animals.
-For it to work you need to copy the sunete.txt and imagini.txt files to the bin/Debug folders of the console/windows_form varient.
+You can play the console varient or the windows forms varient.

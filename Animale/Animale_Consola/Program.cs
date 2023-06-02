@@ -8,13 +8,16 @@ using Quiz_Consola;
 using LibrarieModele;
 
 using NivelStocareData;
+using System.IO;
+using System.Net.NetworkInformation;
+using System.Runtime.InteropServices;
 
 namespace Animale_Consola
 {
 
     internal class Program
     {
-
+        
         static void Main(string[] args)
         {
             string numeFisierImg = ConfigurationManager.AppSettings["NumeFisierImg"];
@@ -76,14 +79,14 @@ namespace Animale_Consola
                         Console.ReadKey();
                         break;
                     case 4:
-                        if (!admin.imaginiCitire(vimg, numeFisierImg))
+                        if (!admin.imaginiCitire(vimg))
                             Console.WriteLine($"Fisirul {numeFisierImg} este gol.");
                         Console.WriteLine("\t...press any key to continue");
                         Console.ReadKey();
                         break;
                     case 5:
-                        if(!admin.suneteCitire(vsnd, numeFisierImg))
-                            Console.WriteLine($"Fisirul {numeFisierImg} este gol.");
+                        if(!admin.suneteCitire(vsnd))
+                            Console.WriteLine($"Fisirul {numeFisierSnd} este gol.");
                         Console.WriteLine("\t...press any key to continue");
                         Console.ReadKey();
                         break;
