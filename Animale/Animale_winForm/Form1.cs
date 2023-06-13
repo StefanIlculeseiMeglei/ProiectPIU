@@ -345,6 +345,7 @@ namespace Animale_Form
             this.textBox1.Show();
             this.BtnAdaugaUser.Show();
             this.btnCauta.Show();
+            this.checkBox1.Checked = false;
 
             user = string.Empty;
             punctaj = 0;
