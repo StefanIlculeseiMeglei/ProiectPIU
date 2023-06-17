@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace LibrarieModele
     public class verificaQuiz
     {
         internal const float FACTORCASTIG = 0.8f;
+        private const int DVALOARE = 20;
+        private const int DRUNDA = 10;
         internal int valoareRaspuns { get; set; }
         internal int MINWIN { get; set; }
         internal int RUNDAMAX { get; set; }
-        public verificaQuiz(int _valoare=20,int _RUNDAMAX=5) {
+        public verificaQuiz(int _valoare=DVALOARE,int _RUNDAMAX=DRUNDA) {
             valoareRaspuns = _valoare;
             MINWIN = (int)(_valoare*_RUNDAMAX*FACTORCASTIG);
             RUNDAMAX = _RUNDAMAX;   

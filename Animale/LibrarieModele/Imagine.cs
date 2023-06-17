@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,17 +11,18 @@ namespace LibrarieModele
     public class imagine
     {
         private const int ID = 0;
+        private const int INVALID = -1;
         private const int NAME = 1;
         private const char SEPARATOR_PRINCIPAL_FISIER = ';';
-        public int id { get; set; }
-        public string name { get; set; }
+        internal int id { get; set; }
+        internal string name { get; set; }
         public imagine(int id, string name)
         {
             this.id = id;
             this.name = name;
             
         }
-        public imagine() { name = null;id = -1; } 
+        public imagine() { name = null;id = INVALID; } 
         public int Id { get { return id; } set { this.id = value; } }
         public string Name { get { return name; } set { this.name = string.Copy(value); } }
 

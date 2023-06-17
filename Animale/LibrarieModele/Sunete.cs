@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,13 +13,14 @@ namespace LibrarieModele
     public class sunete
     {
         private const int MAXNUME = 50;
+        private const int ZERO = 0;
         internal int nr { get; set; } // numar de sunete
         internal string cale { get; set; }
         sunet[] snd; 
         public sunete()
         {
             snd = new sunet[MAXNUME];
-            this.nr = 0;
+            this.nr = ZERO;
             this.cale = string.Empty;
         }
         public int retNr()
@@ -27,7 +29,7 @@ namespace LibrarieModele
         }
         public string[] retLisaNume()
         {
-            if (nr == 0)
+            if (nr == ZERO)
                 return null;
             string[] lista;
             lista = new string[nr];
@@ -38,7 +40,7 @@ namespace LibrarieModele
         public string Cale { get => cale;set => cale = string.Copy(value); }
         public int[] retId()
         {
-            if (nr == 0)
+            if (nr == ZERO)
                 return null;
             int[] _id;
             _id = new int[nr];

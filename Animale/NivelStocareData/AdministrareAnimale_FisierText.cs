@@ -15,6 +15,8 @@ namespace NivelStocareData
         private const int DISTANTA_FOLDER_SOLUTIE = 25;
         private const int ID = 0;
         private const int NUME = 1;
+        private const int ZERO = 0;
+        private const int EGAL = 0;
         private const string sufixImg = "\\RESURSE\\imagini\\";
         private const string sufixSnd = "\\RESURSE\\sunete\\";
         private const string numeFiserUsers = "users.txt";
@@ -90,7 +92,7 @@ namespace NivelStocareData
         {
                 bool exista = true;
                 Stream streamFisierText = File.Open(caleFisierNumeImagini, FileMode.OpenOrCreate); // verifica daca exista fisierul
-                if (streamFisierText.Length == 0)
+                if (streamFisierText.Length == ZERO)
                 {
                     exista = false;
                     
@@ -131,7 +133,7 @@ namespace NivelStocareData
         {
             bool exista = true;
             Stream streamFisierText = File.Open(caleFisierNumeSunete, FileMode.OpenOrCreate); // verifica daca exista fisierul
-            if (streamFisierText.Length == 0)
+            if (streamFisierText.Length == ZERO)
             {
                 exista = false;
                 streamFisierText.Close();
@@ -172,7 +174,7 @@ namespace NivelStocareData
             // al doilea parametru setat la 'true' al constructorului StreamWriter indica
             // modul 'append' de deschidere al fisierului
             Stream streamFisierText = File.Open(caleFisierNumeImagini, FileMode.OpenOrCreate); // verifica daca exista fisierul
-            if (streamFisierText.Length == 0)
+            if (streamFisierText.Length == ZERO)
             {
                 streamFisierText.Close();
                 using (StreamWriter streamWriterFisierText = new StreamWriter(caleFisierNumeImagini, true))
@@ -194,7 +196,7 @@ namespace NivelStocareData
             // al doilea parametru setat la 'true' al constructorului StreamWriter indica
             // modul 'append' de deschidere al fisierului
             Stream streamFisierText = File.Open(caleFisierNumeSunete, FileMode.OpenOrCreate); // verifica daca exista fisierul
-            if (streamFisierText.Length == 0)
+            if (streamFisierText.Length == ZERO)
             {
                 streamFisierText.Close();
                 using (StreamWriter streamWriterFisierText = new StreamWriter(caleFisierNumeSunete, true))
@@ -224,7 +226,7 @@ namespace NivelStocareData
         }
         public int cautaAparatiiUser(string user)
         {
-            int x = 0;
+            int x = ZERO;
 
             using (StreamReader streamReader = new StreamReader(caleFisierUsers)) /// citesc datele din fisier
             {
@@ -232,7 +234,7 @@ namespace NivelStocareData
                 // citirea linilor in continuare
                 while ((linieFisier = streamReader.ReadLine()) != null)
                 {
-                    if (string.Compare(linieFisier, user) == 0) x++;
+                    if (string.Compare(linieFisier, user) == EGAL) x++;
                 };
                 streamReader.Close();
             }

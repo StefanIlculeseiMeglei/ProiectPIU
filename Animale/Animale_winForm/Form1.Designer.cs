@@ -235,7 +235,7 @@
             this.lblPunctaj.Name = "lblPunctaj";
             this.lblPunctaj.Size = new System.Drawing.Size(121, 59);
             this.lblPunctaj.TabIndex = 14;
-            this.lblPunctaj.Text = "Punctaj: 0p";
+       
             // 
             // btnCauta
             // 

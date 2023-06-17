@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace LibrarieModele
     public class sunet
     {
         private const int ID = 0;
+        private const int INVALID = -1;
         private const int NAME = 1;
         private const char SEPARATOR_PRINCIPAL_FISIER = ';';
         internal int id { get; set; }
@@ -19,7 +21,7 @@ namespace LibrarieModele
             this.name = name;
 
         }
-        public sunet() { id = -1; name = null; }
+        public sunet() { id = INVALID; name = null; }
         public int Id { get { return id; } set { id = value; } }
         public string Name { get { return name; } set { name = string.Copy(value); } }
         public string ConversieLaSir_PentruFisier()

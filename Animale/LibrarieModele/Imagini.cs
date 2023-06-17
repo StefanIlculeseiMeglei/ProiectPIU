@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.ComponentModel;
 using System.IO;
 using System.Xml.Schema;
@@ -9,7 +10,8 @@ namespace LibrarieModele
 {
     public class imagini
     {
-        imagine[] imag; 
+        imagine[] imag;
+        private const int ZERO = 0;
         private const int maxNume = 20;
         int nr;// numar de imagini
         string cale;
@@ -29,7 +31,7 @@ namespace LibrarieModele
         }
         public string[] retLisaNume()
         {
-            if (nr == 0)
+            if (nr == ZERO )
                 return null;
             string[] lista;
             lista = new string[nr];
@@ -39,7 +41,7 @@ namespace LibrarieModele
         }
         public int[] retId()
         {
-            if (nr == 0)
+            if (nr == ZERO)
                 return null;
             int[] _id;
             _id = new int[nr];

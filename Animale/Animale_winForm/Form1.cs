@@ -12,6 +12,8 @@ using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 using System.Media;
+using System.CodeDom;
+
 namespace Animale_Form
 {
     public partial class Form1 : Form
@@ -31,13 +33,20 @@ namespace Animale_Form
         private const float PROCENTAJ_CASTIG = 0.8f;
         private const int DIMENSIUNE_1 = 200;
         private const int DIMENSIUNE_2 = 350;
+        private const int DIMENSIUNE_3 = 175;
+        private const int DIMENSIUNE_4 = 68;
+        private const int ZERO = 0;
         imagine img = new imagine();
         sunet snd = new sunet();
         imagini vimg = new imagini();
         sunete vsnd = new sunete();
         dataQuiz quiz = new dataQuiz(20, 10);
         AdministrareQuiz_FisierText admin;
-        SoundPlayer soundManager = new SoundPlayer(); 
+        SoundPlayer soundManager = new SoundPlayer();
+        internal enum POZITII
+        {
+            POZITIE1, POZITIE2, POZITIE3
+        }
 
         public Form1()
         {
@@ -57,8 +66,8 @@ namespace Animale_Form
         private void Form1_Load(object sender, EventArgs e)
         {
             user = string.Empty;
-            punctaj = 0;
-            rundaCurenta = 0;
+            punctaj = ZERO;
+            rundaCurenta = ZERO;
             admin.imaginiCitire(vimg);
             admin.suneteCitire(vsnd);
             quiz.incarcaData(vimg, vsnd);
@@ -105,8 +114,8 @@ namespace Animale_Form
         {
             this.pictureBox1.Height = x;
             this.pictureBox1.Width = x;
-            this.pictureBox1.Left = 175;
-            this.pictureBox1.Top = 68;
+            this.pictureBox1.Left = DIMENSIUNE_3;
+            this.pictureBox1.Top = DIMENSIUNE_4;
         }
         private void updatelblRunda()
         {
@@ -126,7 +135,7 @@ namespace Animale_Form
         }
         private bool verificaCastig()
         {
-            if (punctaj >= this.quiz.RUNDAMAX * this.quiz.valoareRaspuns * PROCENTAJ_CASTIG) return true;
+            if (punctaj >=(int) (this.quiz.RUNDAMAX * this.quiz.valoareRaspuns * PROCENTAJ_CASTIG)) return true;
             else return false;
 
 
@@ -242,9 +251,9 @@ namespace Animale_Form
         }
         private void verificaRaspuns()
         {
-            if (radioOptiune1.Checked == true && this.quiz.getRapunsRunda(rundaCurenta) == 0) punctaj += this.quiz.valoareRaspuns;
-            else if (radioOptiune2.Checked == true && this.quiz.getRapunsRunda(rundaCurenta) == 1) punctaj += this.quiz.valoareRaspuns;
-            else if (radioOptiune3.Checked == true && this.quiz.getRapunsRunda(rundaCurenta) == 2) punctaj += this.quiz.valoareRaspuns;
+            if (radioOptiune1.Checked == true && this.quiz.getRapunsRunda(rundaCurenta) == (int)POZITII.POZITIE1) punctaj += this.quiz.valoareRaspuns;
+            else if (radioOptiune2.Checked == true && this.quiz.getRapunsRunda(rundaCurenta) == (int)POZITII.POZITIE2) punctaj += this.quiz.valoareRaspuns;
+            else if (radioOptiune3.Checked == true && this.quiz.getRapunsRunda(rundaCurenta) == (int)POZITII.POZITIE3) punctaj += this.quiz.valoareRaspuns;
 
         }
         private void updatePictureBox()
@@ -348,8 +357,8 @@ namespace Animale_Form
             this.checkBox1.Checked = false;
 
             user = string.Empty;
-            punctaj = 0;
-            rundaCurenta = 0;
+            punctaj = ZERO;
+            rundaCurenta = ZERO;
             admin.imaginiCitire(vimg);
             admin.suneteCitire(vsnd);
             quiz.incarcaData(vimg, vsnd);
@@ -359,5 +368,7 @@ namespace Animale_Form
             updatePictureBox(numeFisierStart);
 
         }
+
+       
     }
 }
